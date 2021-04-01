@@ -20,9 +20,7 @@ function App() {
       setPressure(result.iotData.pressure);
     }
   };
-//http://192.168.1.178:8088/
   useEffect(() => {
-    window.document.getElementById("frm").src = "http://"+window.location.hostname + ":8088"
     subscribe(callback);
     return () => {
       
@@ -31,7 +29,7 @@ function App() {
   }, []);
   return (
     <>
-    {/* <iframe className="iframe" src="http://96.230.190.210:8099/"  scrolling="yes" height="100%" width="100%" ></iframe> */}
+    {/* <iframe className="iframe" src={`${process.env.REACT_APP_DEVICE_IP_ADDRESS}:8088/`}  scrolling="yes" height="100%" width="100%" ></iframe> */}
     <div className="App-body">
       <h2 className="title">Greenroom 1</h2>
       <iframe className="iframe" id="frm"  src={`http://${window.location.hostname}:8088`}  scrolling="yes" height="100%" width="100%" ></iframe>
